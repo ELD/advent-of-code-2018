@@ -1,0 +1,15 @@
+[package]
+name = "advent-of-code-2018"
+version = "0.1.0"
+authors = ["Eric Dattore <eric.dattore@gmail.com>"]
+edition = "2018"
+
+[lib]
+path = "src/lib.rs"
+name = "libaoc2018"
+
+[[bin]]
+path = "bin/main.rs"
+name = "aoc18"
+
+[dependencies]
