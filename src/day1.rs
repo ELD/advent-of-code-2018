@@ -1,4 +1,6 @@
 use std::collections::HashSet;
+use std::fs::File;
+use std::io::Read;
 
 pub fn part_one() -> i32 {
     parse_input().iter().fold(0, |acc, x| acc + x)
@@ -21,7 +23,9 @@ pub fn part_two() -> i32 {
 }
 
 fn parse_input() -> Vec<i32> {
-    let input = include_str!("inputs/day1.txt");
+    let mut file = File::open("src/inputs/day1.txt").unwrap();
+    let mut input = String::new();
+    file.read_to_string(&mut input).unwrap();
 
     input.split("\n").map(|x| x.parse::<i32>().unwrap()).collect::<Vec<i32>>()
 }

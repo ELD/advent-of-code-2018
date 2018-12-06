@@ -1,4 +1,6 @@
 use std::collections::HashMap;
+use std::fs::File;
+use std::io::Read;
 
 pub fn part_one() -> i32 {
     let barcodes = parse_input();
@@ -40,8 +42,11 @@ pub fn part_two() -> String {
     "NOTHING FOUND".to_string()
 }
 
-fn parse_input() -> Vec<&'static str> {
-    include_str!("inputs/day2.txt").split("\n").collect::<Vec<&str>>()
+fn parse_input() -> Vec<String> {
+    let mut file = File::open("src/inputs/day2.txt").unwrap();
+    let mut input = String::new();
+    file.read_to_string(&mut input).unwrap();
+    input.split("\n").map(|s| s.to_string()).collect::<Vec<String>>()
 }
 
 fn common_letters(lhs: &str, rhs: &str) -> Option<String> {
